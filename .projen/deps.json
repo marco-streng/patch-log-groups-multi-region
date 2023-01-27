@@ -1,6 +1,14 @@
 {
   "dependencies": [
     {
+      "name": "@aws-lambda-powertools/logger",
+      "type": "build"
+    },
+    {
+      "name": "@aws-sdk/client-cloudwatch-logs",
+      "type": "build"
+    },
+    {
       "name": "@types/aws-lambda",
       "type": "build"
     },
@@ -119,14 +127,6 @@
     {
       "name": "typescript",
       "type": "build"
-    },
-    {
-      "name": "@aws-lambda-powertools/logger",
-      "type": "bundled"
-    },
-    {
-      "name": "@aws-sdk/client-cloudwatch-logs",
-      "type": "bundled"
     },
     {
       "name": "@types/babel__traverse",
