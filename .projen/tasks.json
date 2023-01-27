@@ -41,6 +41,33 @@
       ],
       "condition": "! git log --oneline -1 | grep -q \"chore(release):\""
     },
+    "bundle": {
+      "name": "bundle",
+      "description": "Prepare assets",
+      "steps": [
+        {
+          "spawn": "bundle:patch.lambda"
+        }
+      ]
+    },
+    "bundle:patch.lambda": {
+      "name": "bundle:patch.lambda",
+      "description": "Create a JavaScript bundle from src/patch.lambda.ts",
+      "steps": [
+        {
+          "exec": "esbuild --bundle src/patch.lambda.ts --target=\"node18\" --platform=\"node\" --outfile=\"assets/patch.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:@aws-sdk/*"
+        }
+      ]
+    },
+    "bundle:patch.lambda:watch": {
+      "name": "bundle:patch.lambda:watch",
+      "description": "Continuously update the JavaScript bundle from src/patch.lambda.ts",
+      "steps": [
+        {
+          "exec": "esbuild --bundle src/patch.lambda.ts --target=\"node18\" --platform=\"node\" --outfile=\"assets/patch.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:@aws-sdk/* --watch"
+        }
+      ]
+    },
     "clobber": {
       "name": "clobber",
       "description": "hard resets to HEAD of origin and cleans the local repo",
@@ -172,7 +199,12 @@
     },
     "pre-compile": {
       "name": "pre-compile",
-      "description": "Prepare the project for compilation"
+      "description": "Prepare the project for compilation",
+      "steps": [
+        {
+          "spawn": "bundle"
+        }
+      ]
     },
     "release": {
       "name": "release",

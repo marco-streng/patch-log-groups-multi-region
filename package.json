@@ -2,11 +2,14 @@
   "name": "patch-log-groups-multi-region",
   "repository": {
     "type": "git",
-    "url": "https://github.com/marco.streng/patch-log-groups-multi-region.git"
+    "url": "https://github.com/marco-streng/patch-log-groups-multi-region.git"
   },
   "scripts": {
     "build": "npx projen build",
     "bump": "npx projen bump",
+    "bundle": "npx projen bundle",
+    "bundle:patch.lambda": "npx projen bundle:patch.lambda",
+    "bundle:patch.lambda:watch": "npx projen bundle:patch.lambda:watch",
     "clobber": "npx projen clobber",
     "compat": "npx projen compat",
     "compile": "npx projen compile",
@@ -30,20 +33,24 @@
   },
   "author": {
     "name": "Marco Streng",
-    "email": "marco.streng@codecentric.de",
+    "email": "marcostreng@me.com",
     "organization": false
   },
   "devDependencies": {
+    "@types/aws-lambda": "^8.10.109",
     "@types/jest": "^27",
     "@types/node": "^14",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
-    "aws-cdk-lib": "2.1.0",
+    "aws-cdk-lib": "2.62.1",
     "constructs": "10.0.5",
+    "esbuild": "^0.17.3",
     "eslint": "^8",
+    "eslint-config-prettier": "^8.6.0",
     "eslint-import-resolver-node": "^0.3.7",
     "eslint-import-resolver-typescript": "^3.5.3",
     "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^4.2.1",
     "jest": "^27",
     "jest-junit": "^13",
     "jsii": "^1.73.0",
@@ -52,20 +59,35 @@
     "jsii-pacmak": "^1.73.0",
     "json-schema": "^0.4.0",
     "npm-check-updates": "^16",
+    "prettier": "^2.8.3",
     "projen": "^0.67.8",
     "standard-version": "^9",
     "ts-jest": "^27",
     "typescript": "^4.9.4"
   },
   "peerDependencies": {
-    "aws-cdk-lib": "^2.1.0",
+    "aws-cdk-lib": "^2.62.1",
     "constructs": "^10.0.5"
   },
+  "dependencies": {
+    "@aws-lambda-powertools/logger": "^1.5.1",
+    "@aws-sdk/client-cloudwatch-logs": "^3.254.0"
+  },
+  "bundledDependencies": [
+    "@aws-lambda-powertools/logger",
+    "@aws-sdk/client-cloudwatch-logs"
+  ],
   "keywords": [
+    "AWS",
+    "CDK",
+    "CloudWatch",
+    "LogGroup",
+    "LogRetention",
+    "MultiRegion",
     "cdk"
   ],
   "main": "lib/index.js",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "version": "0.0.0",
   "jest": {
     "testMatch": [
