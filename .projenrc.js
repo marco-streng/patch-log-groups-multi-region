@@ -4,6 +4,8 @@ const project = new awscdk.AwsCdkConstructLibrary({
   author: "Marco Streng",
   authorAddress: "marcostreng@me.com",
   name: "patch-log-groups-multi-region",
+  description:
+    "Set log retention on CloudWatch log groups over multiple AWS regions. Usefull to fullfill compliance requirements also for dynamically generated log groups worldwide (e.g. by Lambda@Edge).",
   keywords: [
     "AWS",
     "CDK",

@@ -1,8 +1,8 @@
 # Patch Log Groups Multi Region
 
-CDK construct to set Log Retention on CloudWatch Log Groups over multiple AWS Regions. Usefull to fullfill compliance requirements also for dynamically generated Log Groups worldwide (e.g. by Lambda@Edge).
+CDK construct to set log retention on CloudWatch log groups over multiple AWS regions. Usefull to fullfill compliance requirements also for dynamically generated log groups worldwide (e.g. by Lambda@Edge).
 
-![architecture diagram](arch.jpg)
+![architecture diagram](https://raw.githubusercontent.com/marco-streng/patch-log-groups-multi-region/main/arch.jpg)
 
 ## Getting started
 
