@@ -15,6 +15,9 @@ type Event = {
 
 const logger = new Logger({ serviceName: "patchLogGroups" });
 
+export const sleep = (ms: number) =>
+  new Promise((resolve) => setTimeout(resolve, ms));
+
 const fetchLogGroups = async (
   client: CloudWatchLogsClient,
   nextToken?: string
@@ -25,6 +28,8 @@ const fetchLogGroups = async (
   });
 
   const result = await client.send(describeCommand);
+
+  await sleep(350); // avoid throttling exception
 
   return result.nextToken
     ? (result.logGroups || []).concat(
