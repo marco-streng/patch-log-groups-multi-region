@@ -1,10 +1,8 @@
-import {
-  aws_events,
-  aws_events_targets,
-  aws_iam,
-  aws_stepfunctions,
-  aws_stepfunctions_tasks,
-} from "aws-cdk-lib";
+import * as aws_events from "aws-cdk-lib/aws-events";
+import * as aws_events_targets from "aws-cdk-lib/aws-events-targets";
+import * as aws_iam from "aws-cdk-lib/aws-iam";
+import * as aws_stepfunctions from "aws-cdk-lib/aws-stepfunctions";
+import * as aws_stepfunctions_tasks from "aws-cdk-lib/aws-stepfunctions-tasks";
 import { Construct } from "constructs";
 import { PatchFunction } from "./patch-function";
 export interface PatchLogGroupsProps {
