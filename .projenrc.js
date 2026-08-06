@@ -14,7 +14,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
     "CloudWatch",
     "MultiRegion",
   ],
-  packageManager: javascript.NodePackageManager.YARN,
+  packageManager: javascript.NodePackageManager.PNPM,
   license: "MIT",
   cdkVersion: "2.62.1",
   defaultReleaseBranch: "main",
@@ -27,12 +27,13 @@ const project = new awscdk.AwsCdkConstructLibrary({
     "@aws-lambda-powertools/logger",
   ],
   lambdaOptions: {
-    runtime: awscdk.LambdaRuntime.NODEJS_18_X,
+    runtime: awscdk.LambdaRuntime.NODEJS_24_X,
     bundlingOptions: {
       externals: ["@aws-sdk/*"],
     },
   },
   releaseToNpm: true,
+  npmTrustedPublishing: true,
 });
 
 project.synth();
